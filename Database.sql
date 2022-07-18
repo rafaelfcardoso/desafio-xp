@@ -15,7 +15,6 @@ CREATE TABLE ordens (
     CodCliente INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
     CodAtivo VARCHAR(50) NOT NULL,
     QtdeAtivo INT NOT NULL,
-    Valor DOUBLE,
     FOREIGN KEY (CodCliente) REFERENCES desafio_xp.pessoa_cliente (CodCliente)
 ) ENGINE=INNODB;
 
@@ -32,6 +31,6 @@ VALUES
   ("rafael.fcardoso@hotmail.com", "1234", 1000.00);
   
 INSERT INTO
-  desafio_xp.ordens (CodCliente, CodAtivo, QtdeAtivo, Valor)
+  desafio_xp.ordens (CodCliente, CodAtivo, QtdeAtivo)
 VALUES
-  (1, "PETR4", 100, 28.00);
+  (1, "PETR4", 100);

@@ -1,4 +1,4 @@
-export default interface IOrder {
+export default interface IOrderBody {
   codCliente: number,
   codAtivo: number,
   qtdeAtivo: number,
