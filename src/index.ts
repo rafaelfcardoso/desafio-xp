@@ -1,13 +1,9 @@
 import 'dotenv/config';
 
-import express from 'express';
 import { StatusCodes } from 'http-status-codes';
+import app from './app';
 
-const app = express();
-
-app.use(express.json());
-
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 app.get('/', (req, res) => {
   res.status(StatusCodes.OK).send('Express + TypeScript')

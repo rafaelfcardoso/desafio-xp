@@ -1,14 +1,13 @@
-import { ResultSetHeader } from "mysql2";
 import IOrderBody from "../interfaces/order.interface";
 import investmentsModel from "../models/investments.model";
 
 
-const newInvestment = (order: IOrderBody): Promise<ResultSetHeader> => {
-  return investmentsModel.create(order);
+const newInvestment = async (order: IOrderBody): Promise<IOrderBody> => {
+  const { insertId } = await investmentsModel.create(order);
 
-  // const createdProduct = { ...product, id: insertId };
+  const createdOrder = { ...order, id: insertId };
 
-  // return createdProduct;
+  return createdOrder;
 };
 
 export default {
