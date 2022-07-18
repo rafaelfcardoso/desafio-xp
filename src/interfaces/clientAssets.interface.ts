@@ -1,6 +1,6 @@
 export default interface IClientAssets {
-  CodCliente: number,
-  CodAtivo: number,
-  QtdeAtivo: number,
-  Valor: number,
+  codCliente: number,
+  codAtivo: number,
+  qtdeAtivo: number,
+  valor: number,
 }

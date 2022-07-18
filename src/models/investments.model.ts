@@ -7,7 +7,7 @@ const create = async (order: IOrderBody) => {
   const [result] = await connection.execute<ResultSetHeader>(
     `
   INSERT INTO desafio_xp.ordens
-    (CodCliente, CodAtivo, QtdeAtivo)
+    (codCliente, codAtivo, qtdeAtivo)
   VALUES
     (?, ?, ?)`,
     [order.codCliente, order.codAtivo, order.qtdeAtivo],
