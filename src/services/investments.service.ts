@@ -15,7 +15,7 @@ const newInvestment = async (order: IOrderBody): Promise<IOrderBody> => {
     throw new HttpException(400, "Dados inválidos!");
   }
   const { insertId } = await investmentsModel.create(order);
-
+  console.log({ insertId })
   const createdOrder = { ...order, codCliente: insertId };
   console.log('Service-Order', createdOrder);
   // const createdOrder = await investmentsModel.create(order);

@@ -6,8 +6,10 @@ const investmentController = Router();
 
 investmentController
   .post('/comprar', async (req: Request, res: Response): Promise<Response> => {
-    const investment = await investmentsService.newInvestment(req.body);
+    const order = req.body;
+    const investment = await investmentsService.newInvestment(order);
+    console.log({ investment });
     return res.status(201).json(investment);
-  });
+});
 
 export default investmentController;

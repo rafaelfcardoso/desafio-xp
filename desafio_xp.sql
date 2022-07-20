@@ -17,16 +17,17 @@ CREATE TABLE autenticacao_cliente (
 ) ENGINE=INNODB;
 
 CREATE TABLE ordens (
-    codCliente INTEGER PRIMARY KEY NOT NULL,
+    codCliente INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
     codAtivo INT NOT NULL,
-    qtdeAtivo INT NOT NULL
+    qtdeAtivo INT NOT NULL,
+    FOREIGN KEY (codCliente) REFERENCES desafio_xp.pessoa_cliente (codCliente)
 ) ENGINE=INNODB;
 
-CREATE TABLE ativos (
-    id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    codAtivo VARCHAR(50) NOT NULL,
-    qtdeAtivo INT NOT NULL,
-    valor DOUBLE
+CREATE TABLE ativos_corretora (
+    codAtivo INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    ticker VARCHAR(5) NOT NULL,
+    qtdeAtivo INTEGER NOT NULL,
+    valor DOUBLE NOT NULL
 ) ENGINE=INNODB;
 
 INSERT INTO
@@ -40,6 +41,27 @@ VALUES
   (1, 1, 100);
   
 INSERT INTO
-  desafio_xp.ordens (codCliente, codAtivo, qtdeAtivo)
+  desafio_xp.ativos_corretora (codAtivo, ticker, qtdeAtivo, valor)
 VALUES
-  (2, 2, 1000);
+  (1, "PETR4", 1000000, 29.18);
+  
+INSERT INTO
+  desafio_xp.ativos_corretora (codAtivo, ticker, qtdeAtivo, valor)
+VALUES
+  (2, "VALE3", 50000, 68.88);
+  
+INSERT INTO
+  desafio_xp.ativos_corretora (codAtivo, ticker, qtdeAtivo, valor)
+VALUES
+  (3, "ABEV3", 2500000, 14.48);
+  
+INSERT INTO
+  desafio_xp.ativos_corretora (codAtivo, ticker, qtdeAtivo, valor)
+VALUES
+  (4, "ITUB4", 100000, 23.62);
+  
+INSERT INTO
+  desafio_xp.ativos_corretora (codAtivo, ticker, qtdeAtivo, valor)
+VALUES
+  (5, "BBDC3", 500000, 14.33);
+  
