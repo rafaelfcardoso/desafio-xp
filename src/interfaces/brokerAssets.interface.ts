@@ -1,4 +1,4 @@
-export default interface IBrokerAssets {
+export default interface IBrokerAsset {
   codAtivo: number,
   qtdeAtivo: number,
   valor: number,
