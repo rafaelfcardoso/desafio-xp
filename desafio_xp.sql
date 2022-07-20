@@ -17,10 +17,9 @@ CREATE TABLE autenticacao_cliente (
 ) ENGINE=INNODB;
 
 CREATE TABLE ordens (
-    codCliente INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    codCliente INTEGER PRIMARY KEY NOT NULL,
     codAtivo INT NOT NULL,
-    qtdeAtivo INT NOT NULL,
-    FOREIGN KEY (codCliente) REFERENCES desafio_xp.pessoa_cliente (codCliente)
+    qtdeAtivo INT NOT NULL
 ) ENGINE=INNODB;
 
 CREATE TABLE ativos (
@@ -39,3 +38,8 @@ INSERT INTO
   desafio_xp.ordens (codCliente, codAtivo, qtdeAtivo)
 VALUES
   (1, 1, 100);
+  
+INSERT INTO
+  desafio_xp.ordens (codCliente, codAtivo, qtdeAtivo)
+VALUES
+  (2, 2, 1000);
