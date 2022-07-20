@@ -43,25 +43,25 @@ VALUES
 INSERT INTO
   desafio_xp.ativos_corretora (codAtivo, ticker, qtdeAtivo, valor)
 VALUES
-  (1, "PETR4", 1000000, 29.18);
+  (1001, "PETR4", 1000000, 29.18);
   
 INSERT INTO
   desafio_xp.ativos_corretora (codAtivo, ticker, qtdeAtivo, valor)
 VALUES
-  (2, "VALE3", 50000, 68.88);
+  (1002, "VALE3", 50000, 68.88);
   
 INSERT INTO
   desafio_xp.ativos_corretora (codAtivo, ticker, qtdeAtivo, valor)
 VALUES
-  (3, "ABEV3", 2500000, 14.48);
+  (1003, "ABEV3", 2500000, 14.48);
   
 INSERT INTO
   desafio_xp.ativos_corretora (codAtivo, ticker, qtdeAtivo, valor)
 VALUES
-  (4, "ITUB4", 100000, 23.62);
+  (1004, "ITUB4", 100000, 23.62);
   
 INSERT INTO
   desafio_xp.ativos_corretora (codAtivo, ticker, qtdeAtivo, valor)
 VALUES
-  (5, "BBDC3", 500000, 14.33);
+  (1005, "BBDC3", 500000, 14.33);
   
