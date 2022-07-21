@@ -16,11 +16,18 @@ CREATE TABLE autenticacao_cliente (
     FOREIGN KEY (CodCliente) REFERENCES desafio_xp.pessoa_cliente (codCliente)
 ) ENGINE=INNODB;
 
-CREATE TABLE ordens (
-    codCliente INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
+CREATE TABLE ordens_de_compra (
+	id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    codCliente INTEGER NOT NULL,
     codAtivo INT NOT NULL,
-    qtdeAtivo INT NOT NULL,
-    FOREIGN KEY (codCliente) REFERENCES desafio_xp.pessoa_cliente (codCliente)
+    qtdeAtivo INT NOT NULL
+) ENGINE=INNODB;
+
+CREATE TABLE ordens_de_venda (
+	id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    codCliente INTEGER NOT NULL,
+    codAtivo INT NOT NULL,
+    qtdeAtivo INT NOT NULL
 ) ENGINE=INNODB;
 
 CREATE TABLE depositos (
@@ -42,15 +49,6 @@ CREATE TABLE ativos_corretora (
     valor DOUBLE NOT NULL
 ) ENGINE=INNODB;
 
-INSERT INTO
-  desafio_xp.pessoa_cliente (codCliente, saldo)
-VALUES
-  (1, 1000.00);
-  
-INSERT INTO
-  desafio_xp.ordens (codCliente, codAtivo, qtdeAtivo)
-VALUES
-  (1, 1, 100);
   
 INSERT INTO
   desafio_xp.ativos_corretora (codAtivo, ticker, qtdeAtivo, valor)
