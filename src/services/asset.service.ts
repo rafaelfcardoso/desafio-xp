@@ -1,4 +1,4 @@
-import IBrokerAsset from "../interfaces/brokerAssets.interface";
+import { IBrokerAsset } from "../interfaces/brokerAssets.interface";
 import IClientAsset from "../interfaces/clientAssets.interface";
 import assetModel from "../models/asset.model";
 

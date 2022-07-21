@@ -16,15 +16,21 @@ const newBuyOrder = async (order: IOrderBody): Promise<IOrderBody> => {
     throw new HttpException(400, "Dados inválidos!");
   }
 
-  /* const brokerAsset = assetModel.getByCode(order.codAtivo);
-
-  if ((await brokerAsset).qtdeAtivo < order.qtdeAtivo) {
-    throw new HttpException(400, "Quantidade indisponível!");
-  } */
-
   const { insertId } = await investmentsModel.createBuyOrder(order);
-
+  
   const buyOrder = { ...order, id: insertId };
+
+  const { valor } = await assetModel.getValueById(order.codAtivo);
+
+  const clientAsset = { ...order, valor };
+
+  const existent = await assetModel.getByClient(order.codCliente);
+
+  if (existent && existent.codAtivo === order.codAtivo) {
+    await assetModel.updateAdd(clientAsset);
+  } else {
+    await assetModel.newInvestment(clientAsset);
+  }
 
   return buyOrder;
 };
