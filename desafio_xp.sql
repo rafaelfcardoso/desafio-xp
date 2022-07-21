@@ -58,7 +58,10 @@ CREATE TABLE ativos_cliente (
 ) ENGINE=INNODB;
 
 
-
+INSERT INTO
+  desafio_xp.ativos_cliente (codCliente, codAtivo, qtdeAtivo, valor)
+VALUES
+  (3, 2, 10000, 29.18);
   
 INSERT INTO
   desafio_xp.ativos_corretora (codAtivo, ticker, qtdeAtivo, valor)
