@@ -15,12 +15,24 @@ const newBuyOrder = async (order: IOrderBody): Promise<IOrderBody> => {
     throw new HttpException(400, "Dados inválidos!");
   }
   const { insertId } = await investmentsModel.createBuyOrder(order);
-  
-  const createdOrder = { ...order, id: insertId };
 
-  return createdOrder;
+  const buyOrder = { ...order, id: insertId };
+
+  return buyOrder;
+};
+
+const newSellOrder = async (order: IOrderBody): Promise<IOrderBody> => {
+  if (!isValid(order)) {
+    throw new HttpException(400, "Dados inválidos!");
+  }
+  const { insertId } = await investmentsModel.createSellOrder(order);
+  
+  const sellOrder = { ...order, id: insertId };
+
+  return sellOrder;
 };
 
 export default {
   newBuyOrder,
+  newSellOrder,
 };

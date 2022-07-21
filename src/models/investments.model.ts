@@ -11,6 +11,17 @@ const createBuyOrder = async (order: IOrderBody): Promise<ResultSetHeader> => {
   return result;
 };
 
+
+const createSellOrder = async (order: IOrderBody): Promise<ResultSetHeader> => {
+  const [result] = await connection.execute<ResultSetHeader>(`INSERT INTO desafio_xp.ordens_de_venda (codCliente,
+     codAtivo, qtdeAtivo) VALUES (?, ?, ?)`,
+    [order.codCliente, order.codAtivo, order.qtdeAtivo]);
+
+  return result;
+};
+
+
 export default {
   createBuyOrder,
+  createSellOrder,
 };
