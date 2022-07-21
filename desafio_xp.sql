@@ -49,6 +49,16 @@ CREATE TABLE ativos_corretora (
     valor DOUBLE NOT NULL
 ) ENGINE=INNODB;
 
+CREATE TABLE ativos_cliente (
+	id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    codCliente INTEGER NOT NULL,
+    codAtivo INTEGER NOT NULL,
+    qtdeAtivo INTEGER NOT NULL,
+    valor DOUBLE NOT NULL
+) ENGINE=INNODB;
+
+
+
   
 INSERT INTO
   desafio_xp.ativos_corretora (codAtivo, ticker, qtdeAtivo, valor)
