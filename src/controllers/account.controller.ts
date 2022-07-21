@@ -13,7 +13,13 @@ accountController.get("/:id", async (req: Request, res: Response): Promise<Respo
 
 accountController.post("/deposito", async (req: Request, res: Response): Promise<Response> => {
   const transaction = await transactionService.createDeposit(req.body);
-  console.log({ transaction });
+  
+  return res.status(201).json(transaction);
+})
+
+accountController.post("/saque", async (req: Request, res: Response): Promise<Response> => {
+  const transaction = await transactionService.createWithdraw(req.body);
+
   return res.status(201).json(transaction);
 })
 

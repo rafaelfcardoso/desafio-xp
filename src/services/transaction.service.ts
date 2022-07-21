@@ -10,6 +10,15 @@ const createDeposit = async (deposit: ITransaction): Promise<ITransaction> => {
   return newDeposit;
 }
 
+const createWithdraw = async (withdraw: ITransaction): Promise<ITransaction> => {
+  const { insertId } = await transactionModel.createWithdraw(withdraw);
+
+  const newWithdraw = { ...withdraw, id: insertId };
+
+  return newWithdraw;
+}
+
 export default {
   createDeposit,
+  createWithdraw,
 };

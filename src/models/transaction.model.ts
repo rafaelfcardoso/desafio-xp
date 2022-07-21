@@ -11,6 +11,15 @@ const createDeposit = async (transaction: ITransaction): Promise<ResultSetHeader
  return result;
 };
 
+const createWithdraw = async (transaction: ITransaction): Promise<ResultSetHeader> => {
+  const [ result ] = await connection.execute<ResultSetHeader>(`INSERT INTO desafio_xp.saques (codCliente,
+    valor) VALUES (?, ?)`,
+   [transaction.codCliente, transaction.valor]);
+
+ return result;
+};
+
 export default {
   createDeposit,
+  createWithdraw,
 };
