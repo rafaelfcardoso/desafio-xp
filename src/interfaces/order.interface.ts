@@ -4,4 +4,5 @@ export default interface IOrderBody {
   codAtivo: number,
   qtdeAtivo: number,
   valor?: number,
+  message?: string;
 }
