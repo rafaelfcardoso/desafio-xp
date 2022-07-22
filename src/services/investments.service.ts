@@ -24,10 +24,15 @@ const newBuyOrder = async (order: IOrderBody): Promise<IOrderBody> => {
 
   const clientAsset = { ...order, valor }; // Insere o valor unitario na ordem
 
-  const existent = await assetModel.getByClient(order.codCliente); 
+  const clientHistory = await assetModel.getByClient(order.codCliente); 
+  // console.log({ clientHistory });
 
-  if (existent && existent.codAtivo === order.codAtivo) {
-    await assetModel.updateBuy(clientAsset); // Atualiza a quantia sob custodia.
+  if (clientHistory.length) {
+    clientHistory.forEach((asset) => {
+      if (asset.codAtivo === order.codAtivo) {
+        assetModel.updateBuy(clientAsset); // Atualiza a quantia sob custodia.
+      }
+    })
   } else {
     await assetModel.newInvestment(clientAsset); 
   }
@@ -37,7 +42,7 @@ const newBuyOrder = async (order: IOrderBody): Promise<IOrderBody> => {
 
 const newSellOrder = async (order: IOrderBody): Promise<IOrderBody> => {
   if (!isValid(order)) {
-    throw new HttpException(400, "Dados inválidos!");
+    throw new HttpException(401, "Dados inválidos!");
   }
 
   const { valor } = await assetModel.getValueById(order.codAtivo); // Obtem o valor da acao
@@ -46,7 +51,9 @@ const newSellOrder = async (order: IOrderBody): Promise<IOrderBody> => {
 
   const existent = await assetModel.getByClient(order.codCliente); 
 
-  if (existent && existent.codAtivo === order.codAtivo && existent.qtdeAtivo >= order.qtdeAtivo) {
+  return order;
+
+  /* if (existent && existent.codAtivo === order.codAtivo && existent.qtdeAtivo >= order.qtdeAtivo) {
     await assetModel.updateSell(clientAsset); // Atualiza a quantia sob custodia 
 
     const { insertId } = await investmentsModel.createSellOrder(order);
@@ -55,10 +62,9 @@ const newSellOrder = async (order: IOrderBody): Promise<IOrderBody> => {
 
     return sellOrder;
   } else {
-    // await assetModel.newInvestment(clientAsset);
-    throw new HttpException(400, 'Valor da venda é maior que a quantia sob custódia!');
-    // return { ...order, message: 'Valor da venda é maior que a quantia sob custódia!' }; 
-  }
+    // throw new HttpException(400, 'Valor da venda é maior que a quantia sob custódia!');
+    return { ...order, message: 'Valor da venda é maior que a quantia sob custódia!' }; 
+  } */
 };
 
 export default {

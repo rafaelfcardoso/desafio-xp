@@ -22,18 +22,17 @@ investmentController
 });
 
 investmentController
-  .post('/vender', httpErrorMiddleware, async (req: Request, res: Response): Promise<Response> => {
+  .post('/vender', httpErrorMiddleware, (async (req: Request, res: Response): Promise<Response> => {
     const order = req.body;
     
     const investment = await investmentsService.newSellOrder(order);
 
     if (order.message) {
-      return res.status(400).json(order.message)
+      console.log(order.message);
+      return res.status(400).json(order.message);
     } else {
       return res.status(201).json(investment);
-
     }
-
-});
+}));
 
 export default investmentController;

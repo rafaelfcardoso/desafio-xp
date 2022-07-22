@@ -21,12 +21,15 @@ const getValueById = async (codAtivo: number): Promise<IAssetValue> => {
   return value as IAssetValue;
 }
 
-const getByClient = async (codCliente: number): Promise<IClientAsset> => {
+const getByClient = async (codCliente: number): Promise<IClientAsset[]> => {
   const [rows] = await connection.execute(
       'SELECT codCliente, codAtivo, qtdeAtivo, valor FROM desafio_xp.ativos_cliente WHERE codCliente = ?', [codCliente],
   );
-  const [client] = rows as IClientAsset[];
-  return client as IClientAsset;
+  // console.log(rows);
+  const client = rows as IClientAsset[];
+  
+  // console.log(client);
+  return client as IClientAsset[];
 }
 
 const newInvestment = async (investment: IClientAsset): Promise<ResultSetHeader> => {

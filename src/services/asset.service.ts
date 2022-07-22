@@ -6,7 +6,7 @@ const getByCodeAsset = (codAtivo: number): Promise<IBrokerAsset> => {
   return assetModel.getByCode(codAtivo);
 }
 
-const getByClient = (codCliente: number): Promise<IClientAsset> => {
+const getByClient = (codCliente: number): Promise<IClientAsset[]> => {
   return assetModel.getByClient(codCliente);
 }
 
