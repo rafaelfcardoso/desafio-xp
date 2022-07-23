@@ -21,7 +21,7 @@ const getByClient = (codCliente: number): Promise<IClientAsset[]> => {
 
 const updateBuyOrder = async (codAtivo: number, order: IUpdateOrder): Promise<IUpdateOrder> => {
   if (!isValid(order)) {
-    throw new HttpException(400, "Dados inválidos!");
+    throw new HttpException(400, "Dados inválidos.");
   }
 
   const { valor } = await assetModel.getValueById(codAtivo); // Obtem o valor da acao
@@ -38,15 +38,47 @@ const updateBuyOrder = async (codAtivo: number, order: IUpdateOrder): Promise<IU
       }
     })
   } else {
-    throw new HttpException(400, "Não existem ordens cadastradas neste ativo"); 
+    throw new HttpException(400, "Não existem ordens cadastradas neste ativo."); 
   }
 
   return clientAsset;
+};
+
+const updateSellOrder = async (codAtivo: number, order: IUpdateOrder): Promise<IUpdateOrder>=> {
+  if (!isValid(order)) {
+    throw new HttpException(401, "Dados inválidos.");
+  }
+
+  const { valor } = await assetModel.getValueById(codAtivo); // Obtem o valor da acao
+
+  const clientAsset = { ...order, codAtivo, valor }; // Insere o valor unitario na ordem
+
+  const clientHistory = await assetModel.getByClient(order.codCliente); 
+
+  if (clientHistory.length) {
+    clientHistory.forEach(async (asset) => {
+      if (asset.codAtivo === codAtivo) {
+        
+        if (asset.qtdeAtivo <= order.qtdeAtivo) {
+          throw new HttpException(400, "Valor da venda é maior que a quantia sob custódia.");
+        }
+
+        assetModel.updateSell(clientAsset); // Atualiza a quantia sob custodia 
+
+      } else {
+        throw new HttpException(404, `Ativo ${codAtivo} não encontrado para o cliente ${order.codCliente}.`);
+      }
+    
+    })
+
+  }
+  return order;
 };
 
 export default {
   getByCodeAsset,
   getByClient,
   updateBuyOrder,
+  updateSellOrder
 };
 

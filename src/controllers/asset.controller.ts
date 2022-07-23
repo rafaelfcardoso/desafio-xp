@@ -23,7 +23,14 @@ assetController.put("/compra/:id", async (req: Request, res: Response): Promise<
   const codAtivo = parseInt(req.params.id);
   const order = await assetService.updateBuyOrder(codAtivo, req.body);
 
-  return res.status(201).json(order);
+  return res.status(200).json(order);
+})
+
+assetController.put("/venda/:id", async (req: Request, res: Response): Promise<Response> => {
+  const codAtivo = parseInt(req.params.id);
+  const order = await assetService.updateSellOrder(codAtivo, req.body);
+
+  return res.status(200).json(order);
 })
 
 export default assetController;
