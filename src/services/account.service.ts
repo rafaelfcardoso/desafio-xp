@@ -1,9 +1,9 @@
 import ITransaction from "../interfaces/transaction.interface";
-import transactionModel from "../models/transaction.model";
+import accountModel from "../models/account.model";
 
 
 const createDeposit = async (deposit: ITransaction): Promise<ITransaction> => {
-  const { insertId } = await transactionModel.createDeposit(deposit);
+  const { insertId } = await accountModel.createDeposit(deposit);
 
   const newDeposit = { ...deposit, id: insertId };
 
@@ -11,7 +11,7 @@ const createDeposit = async (deposit: ITransaction): Promise<ITransaction> => {
 }
 
 const createWithdraw = async (withdraw: ITransaction): Promise<ITransaction> => {
-  const { insertId } = await transactionModel.createWithdraw(withdraw);
+  const { insertId } = await accountModel.createWithdraw(withdraw);
 
   const newWithdraw = { ...withdraw, id: insertId };
 

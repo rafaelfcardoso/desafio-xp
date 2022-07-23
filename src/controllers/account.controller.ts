@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
 import clientService from "../services/client.service";
-import transactionService from "../services/transaction.service";
+import accountService from "../services/account.service";
 
 const accountController = Router();
 
@@ -12,13 +12,13 @@ accountController.get("/:id", async (req: Request, res: Response): Promise<Respo
 })
 
 accountController.post("/deposito", async (req: Request, res: Response): Promise<Response> => {
-  const transaction = await transactionService.createDeposit(req.body);
+  const transaction = await accountService.createDeposit(req.body);
   
   return res.status(201).json(transaction);
 })
 
 accountController.post("/saque", async (req: Request, res: Response): Promise<Response> => {
-  const transaction = await transactionService.createWithdraw(req.body);
+  const transaction = await accountService.createWithdraw(req.body);
 
   return res.status(201).json(transaction);
 })
