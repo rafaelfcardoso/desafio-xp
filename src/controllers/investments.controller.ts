@@ -1,5 +1,6 @@
 import { Request, Response, Router } from 'express';
 // import httpErrorMiddleware from '../middleware/error.middleware';
+import { StatusCodes } from 'http-status-codes';
 import assetService from '../services/asset.service';
 import investmentsService from '../services/investments.service';
 
@@ -13,12 +14,12 @@ investmentController
     const brokerAsset = await assetService.getByCodeAsset(order.codAtivo);
 
     if (brokerAsset.qtdeAtivo < order.qtdeAtivo) {
-      return res.status(400).json({ message: 'Quantidade indisponível!' });
+      return res.status(StatusCodes.BAD_REQUEST).json({ message: 'Quantidade indisponível!' });
     }
 
     const investment = await investmentsService.newBuyOrder(order);
 
-    return res.status(201).json(investment);
+    return res.status(StatusCodes.CREATED).json(investment);
 });
 
 investmentController
@@ -29,9 +30,9 @@ investmentController
 
     if (order.message) {
       console.log(order.message);
-      return res.status(400).json(order.message);
+      return res.status(StatusCodes.BAD_REQUEST).json(order.message);
     } else {
-      return res.status(201).json(investment);
+      return res.status(StatusCodes.CREATED).json(investment);
     }
 }));
 

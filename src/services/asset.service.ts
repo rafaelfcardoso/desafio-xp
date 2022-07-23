@@ -3,6 +3,7 @@ import IClientAsset from "../interfaces/clientAssets.interface";
 import IUpdateOrder from "../interfaces/updateOrder";
 import assetModel from "../models/asset.model";
 import HttpException from "../shared/http.exception";
+import { StatusCodes } from 'http-status-codes';
 
 const isValid = (order: IUpdateOrder) => {
   if (!order.qtdeAtivo || typeof order.qtdeAtivo !== "number") return false;
@@ -21,7 +22,7 @@ const getByClient = (codCliente: number): Promise<IClientAsset[]> => {
 
 const updateBuyOrder = async (codAtivo: number, order: IUpdateOrder): Promise<IUpdateOrder> => {
   if (!isValid(order)) {
-    throw new HttpException(400, "Dados inválidos.");
+    throw new HttpException(StatusCodes.BAD_REQUEST, "Dados inválidos.");
   }
 
   const { valor } = await assetModel.getValueById(codAtivo); // Obtem o valor da acao
@@ -38,7 +39,7 @@ const updateBuyOrder = async (codAtivo: number, order: IUpdateOrder): Promise<IU
       }
     })
   } else {
-    throw new HttpException(400, "Não existem ordens cadastradas neste ativo."); 
+    throw new HttpException(StatusCodes.BAD_REQUEST, "Não existem ordens cadastradas neste ativo."); 
   }
 
   return clientAsset;
@@ -46,7 +47,7 @@ const updateBuyOrder = async (codAtivo: number, order: IUpdateOrder): Promise<IU
 
 const updateSellOrder = async (codAtivo: number, order: IUpdateOrder): Promise<IUpdateOrder>=> {
   if (!isValid(order)) {
-    throw new HttpException(401, "Dados inválidos.");
+    throw new HttpException(StatusCodes.BAD_REQUEST, "Dados inválidos.");
   }
 
   const { valor } = await assetModel.getValueById(codAtivo); // Obtem o valor da acao
@@ -60,13 +61,13 @@ const updateSellOrder = async (codAtivo: number, order: IUpdateOrder): Promise<I
       if (asset.codAtivo === codAtivo) {
         
         if (asset.qtdeAtivo <= order.qtdeAtivo) {
-          throw new HttpException(400, "Valor da venda é maior que a quantia sob custódia.");
+          throw new HttpException(StatusCodes.BAD_REQUEST, "Valor da venda é maior que a quantia sob custódia.");
         }
 
         assetModel.updateSell(clientAsset); // Atualiza a quantia sob custodia 
 
       } else {
-        throw new HttpException(404, `Ativo ${codAtivo} não encontrado para o cliente ${order.codCliente}.`);
+        throw new HttpException(StatusCodes.NOT_FOUND, `Ativo ${codAtivo} não encontrado para o cliente ${order.codCliente}.`);
       }
     
     })

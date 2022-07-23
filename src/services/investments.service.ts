@@ -1,3 +1,4 @@
+import { StatusCodes } from "http-status-codes";
 import IOrderBody from "../interfaces/order.interface";
 import investmentsModel from "../models/investments.model";
 import HttpException from "../shared/http.exception";
@@ -12,7 +13,7 @@ const isValid = (order: IOrderBody) => {
 
 const newBuyOrder = async (order: IOrderBody): Promise<IOrderBody> => {
   if (!isValid(order)) {
-    throw new HttpException(400, "Dados inválidos!");
+    throw new HttpException(StatusCodes.BAD_REQUEST, "Dados inválidos!");
   }
   const { insertId } = await investmentsModel.createBuyOrder(order);
 
@@ -23,7 +24,7 @@ const newBuyOrder = async (order: IOrderBody): Promise<IOrderBody> => {
 
 const newSellOrder = async (order: IOrderBody): Promise<IOrderBody> => {
   if (!isValid(order)) {
-    throw new HttpException(400, "Dados inválidos!");
+    throw new HttpException(StatusCodes.BAD_REQUEST, "Dados inválidos!");
   }
   const { insertId } = await investmentsModel.createSellOrder(order);
 

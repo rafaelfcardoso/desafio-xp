@@ -1,4 +1,5 @@
 import { Request, Response, Router } from "express";
+import { StatusCodes } from "http-status-codes";
 import assetService from "../services/asset.service";
 
 const assetController = Router();
@@ -8,7 +9,7 @@ assetController.get("/:id", async (req: Request, res: Response): Promise<Respons
 
   const assets = await assetService.getByCodeAsset(assetId);
 
-  return res.status(200).json(assets);
+  return res.status(StatusCodes.OK).json(assets);
 })
 
 assetController.get("/cliente/:id", async (req: Request, res: Response): Promise<Response> => {
@@ -16,21 +17,21 @@ assetController.get("/cliente/:id", async (req: Request, res: Response): Promise
 
   const assets = await assetService.getByClient(codeClient);
 
-  return res.status(200).json(assets);
+  return res.status(StatusCodes.OK).json(assets);
 })
 
 assetController.put("/compra/:id", async (req: Request, res: Response): Promise<Response> => {
   const codAtivo = parseInt(req.params.id);
   const order = await assetService.updateBuyOrder(codAtivo, req.body);
 
-  return res.status(200).json(order);
+  return res.status(StatusCodes.OK).json(order);
 })
 
 assetController.put("/venda/:id", async (req: Request, res: Response): Promise<Response> => {
   const codAtivo = parseInt(req.params.id);
   const order = await assetService.updateSellOrder(codAtivo, req.body);
 
-  return res.status(200).json(order);
+  return res.status(StatusCodes.OK).json(order);
 })
 
 export default assetController;
