@@ -6,14 +6,8 @@ USE desafio_xp;
 
 CREATE TABLE pessoa_cliente (
     codCliente INTEGER PRIMARY KEY NOT NULL,
+    senha TEXT NOT NULL,
     saldo DOUBLE NOT NULL
-) ENGINE=INNODB;
-
-CREATE TABLE autenticacao_cliente (
-    codCliente INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    email VARCHAR(150) NOT NULL,
-    password VARCHAR(20) NOT NULL,
-    FOREIGN KEY (CodCliente) REFERENCES desafio_xp.pessoa_cliente (codCliente)
 ) ENGINE=INNODB;
 
 CREATE TABLE ordens_de_compra (

@@ -1,6 +1,5 @@
 import IOrderBody from "../interfaces/order.interface";
 import investmentsModel from "../models/investments.model";
-import assetModel from "../models/asset.model";
 import HttpException from "../shared/http.exception";
 
 const isValid = (order: IOrderBody) => {
