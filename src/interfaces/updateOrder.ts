@@ -3,4 +3,5 @@ export default interface IUpdateOrder {
   codCliente: number,
   qtdeAtivo: number,
   valor?: number,
+  message?: string,
 }

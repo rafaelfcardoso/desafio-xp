@@ -14,7 +14,7 @@ investmentController
     const brokerAsset = await assetService.getByCodeAsset(order.codAtivo);
 
     if (brokerAsset.qtdeAtivo < order.qtdeAtivo) {
-      return res.status(StatusCodes.BAD_REQUEST).json({ message: 'Quantidade indisponível!' });
+      return res.status(StatusCodes.BAD_REQUEST).json({ message: 'Quantidade indisponível na Corretora!' });
     }
 
     const investment = await investmentsService.newBuyOrder(order);

@@ -61,13 +61,13 @@ const updateSellOrder = async (codAtivo: number, order: IUpdateOrder): Promise<I
       if (asset.codAtivo === codAtivo) {
         
         if (asset.qtdeAtivo <= order.qtdeAtivo) {
-          throw new HttpException(StatusCodes.BAD_REQUEST, "Valor da venda é maior que a quantia sob custódia.");
+          return order.message = "Valor da venda é maior que a quantia sob custódia.";
         }
 
         assetModel.updateSell(clientAsset); // Atualiza a quantia sob custodia 
 
       } else {
-        throw new HttpException(StatusCodes.NOT_FOUND, `Ativo ${codAtivo} não encontrado para o cliente ${order.codCliente}.`);
+        return order.message =`Ativo ${codAtivo} não encontrado para o cliente ${order.codCliente}.`
       }
     
     })

@@ -5,7 +5,7 @@ import investmentsModel from "../models/investments.model";
 import HttpException from "../shared/http.exception";
 
 const isValid = (order: IOrderBody) => {
-  if (!order.codAtivo || typeof order.codAtivo !== "number") return false;
+  if (!order.codCliente || typeof order.codCliente !== "number") return false;
   if (!order.codAtivo || typeof order.codAtivo !== "number") return false;
   if (!order.qtdeAtivo || typeof order.qtdeAtivo !== "number") return false;
 
@@ -58,7 +58,7 @@ const newSellOrder = async (order: IOrderBody): Promise<IOrderBody>=> {
         
         if (asset.qtdeAtivo <= order.qtdeAtivo) {
           // throw new HttpException(StatusCodes.BAD_REQUEST, "Valor da venda é maior que a quantia sob custódia.");
-          order.message = "Valor da venda é maior que a quantia sob custódia.";
+          return order.message = "Valor da venda é maior que a quantia sob custódia.";
         }
 
         assetModel.updateSell(clientAsset); // Atualiza a quantia sob custodia 
@@ -70,7 +70,7 @@ const newSellOrder = async (order: IOrderBody): Promise<IOrderBody>=> {
 
       } else {
         //throw new HttpException(StatusCodes.NOT_FOUND, `Ativo ${order.codAtivo} não encontrado para o cliente ${order.codCliente}.`);
-        order.message =`Ativo ${order.codAtivo} não encontrado para o cliente ${order.codCliente}.`
+        return order.message =`Ativo ${order.codAtivo} não encontrado para o cliente ${order.codCliente}.`
       }
     })
   }
