@@ -20,14 +20,14 @@ assetController.get("/cliente/:id", async (req: Request, res: Response): Promise
   return res.status(StatusCodes.OK).json(assets);
 })
 
-assetController.put("/compra/:id", async (req: Request, res: Response): Promise<Response> => {
+assetController.put("/comprar/:id", async (req: Request, res: Response): Promise<Response> => {
   const codAtivo = parseInt(req.params.id);
   const order = await assetService.updateBuyOrder(codAtivo, req.body);
 
   return res.status(StatusCodes.OK).json(order);
 })
 
-assetController.put("/venda/:id", async (req: Request, res: Response): Promise<Response> => {
+assetController.put("/vender/:id", async (req: Request, res: Response): Promise<Response> => {
   const codAtivo = parseInt(req.params.id);
   const order = await assetService.updateSellOrder(codAtivo, req.body);
 

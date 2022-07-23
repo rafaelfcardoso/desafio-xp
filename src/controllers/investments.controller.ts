@@ -28,9 +28,9 @@ investmentController
     
     const investment = await investmentsService.newSellOrder(order);
 
-    if (order.message) {
-      console.log(order.message);
-      return res.status(StatusCodes.BAD_REQUEST).json(order.message);
+    if (investment.message) {
+      console.log(investment.message);
+      return res.status(StatusCodes.BAD_REQUEST).json({ message: investment.message});
     } else {
       return res.status(StatusCodes.CREATED).json(investment);
     }

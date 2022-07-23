@@ -12,7 +12,6 @@ CREATE TABLE pessoa_cliente (
 ) ENGINE=INNODB;
 
 CREATE TABLE ordens_de_compra (
-	id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
     codCliente INTEGER NOT NULL,
     codAtivo INT NOT NULL,
     qtdeAtivo INT NOT NULL
