@@ -1,5 +1,5 @@
 import { Request, Response, Router } from 'express';
-import httpErrorMiddleware from '../middleware/error.middleware';
+// import httpErrorMiddleware from '../middleware/error.middleware';
 import assetService from '../services/asset.service';
 import investmentsService from '../services/investments.service';
 
@@ -22,7 +22,7 @@ investmentController
 });
 
 investmentController
-  .post('/vender', httpErrorMiddleware, (async (req: Request, res: Response): Promise<Response> => {
+  .post('/vender', (async (req: Request, res: Response): Promise<Response> => {
     const order = req.body;
     
     const investment = await investmentsService.newSellOrder(order);

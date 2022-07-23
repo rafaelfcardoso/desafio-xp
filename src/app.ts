@@ -1,6 +1,7 @@
 import express from 'express';
-import router from './routes';
 import 'express-async-errors';
+
+import router from './routes';
 import httpErrorMiddleware from './middleware/error.middleware';
 import 'dotenv/config';
 
