@@ -6,7 +6,8 @@ USE desafio_xp;
 
 CREATE TABLE pessoa_cliente (
     codCliente INTEGER PRIMARY KEY NOT NULL,
-    senha TEXT NOT NULL,
+    username TEXT NOT NULL,
+    password TEXT NOT NULL,
     saldo DOUBLE NOT NULL
 ) ENGINE=INNODB;
 
@@ -51,6 +52,15 @@ CREATE TABLE ativos_cliente (
     valor DOUBLE NOT NULL
 ) ENGINE=INNODB;
 
+INSERT INTO
+  desafio_xp.pessoa_cliente (codCliente, username, password, saldo)
+VALUES
+  (1, 'bob','senha1', 1000);
+  
+  INSERT INTO
+  desafio_xp.pessoa_cliente (codCliente, username, password, saldo)
+VALUES
+  (2, 'alice','senha2', 1000);
 
 INSERT INTO
   desafio_xp.ativos_cliente (codCliente, codAtivo, qtdeAtivo, valor)

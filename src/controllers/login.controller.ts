@@ -1,5 +1,5 @@
 import { Request, Response, Router } from 'express';
-import validateLogin from '../middlewares/login.middleware';
+import validateLogin from '../middlewares/validateLogin.middleware';
 import clientService from '../services/client.service';
 import { generateJWTToken } from '../utils/jwt';
 import { StatusCodes } from 'http-status-codes';

@@ -18,7 +18,7 @@ const getAll = async (): Promise<ILogin[]> => {
 };
 
 const getByUsername = async (username: string): Promise<ILogin[]> => {
-  const query = 'SELECT username, senha FROM desafio_xp.pessoa_cliente WHERE username=?;';
+  const query = 'SELECT username, password FROM desafio_xp.pessoa_cliente WHERE username=?;';
 
   const [users] = await connection.execute(query, [username]);
 
