@@ -24,10 +24,8 @@ const newBuyOrder = async (order: IOrderBody): Promise<IOrderBody> => {
   const { valor } = await assetModel.getValueById(order.codAtivo);
 
   const clientAsset = { ...order, valor };
-  console.log({ clientAsset });
 
   const clientHistory = await assetModel.getByClient(order.codCliente); 
-  console.log({ clientHistory });
 
 
   if (clientHistory.every((asset) => (asset.codAtivo !== order.codAtivo))) {
@@ -58,7 +56,6 @@ const newSellOrder = async (order: IOrderBody): Promise<IOrderBody>=> {
       if (asset.codAtivo === order.codAtivo) {
         
         if (asset.qtdeAtivo <= order.qtdeAtivo) {
-          // throw new HttpException(StatusCodes.BAD_REQUEST, "Valor da venda é maior que a quantia sob custódia.");
           return order.message = "Valor da venda é maior que a quantia sob custódia.";
         }
 
@@ -70,7 +67,6 @@ const newSellOrder = async (order: IOrderBody): Promise<IOrderBody>=> {
         return sellOrder;
 
       } else {
-        //throw new HttpException(StatusCodes.NOT_FOUND, `Ativo ${order.codAtivo} não encontrado para o cliente ${order.codCliente}.`);
         return order.message =`Ativo ${order.codAtivo} não encontrado para o cliente ${order.codCliente}.`
       }
     })

@@ -30,7 +30,6 @@ const updateBuyOrder = async (codAtivo: number, order: IUpdateOrder): Promise<IU
   const clientAsset = { ...order, codAtivo, valor }; // Insere o valor unitario na ordem
 
   const clientHistory = await assetModel.getByClient(order.codCliente);
-  // console.log({ clientHistory });
 
   if (clientHistory.length) {
     clientHistory.forEach((asset) => {
