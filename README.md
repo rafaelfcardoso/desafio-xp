@@ -151,6 +151,54 @@ CREATE TABLE ativos_cliente (
 
 </details>
 
+## 2 - GET BY CLIENT(/ativos/{cod-cliente})
+
+- Esta rota teve a o caminho /cliente adicionado para não haver conflito com a rota Get By Asset dos ativos da corretora;
+-  Endpoint(`/ativos/cliente/{cod-cliente}`) que recebe como parametro o codigo do cliente cadastrado.
+-  Implementei esta rota para que fosse capaz de enviar os ativos sob custódia de cada cliente para o Front-end.
+
+<details>
+<summary><strong>Retorno</strong></summary><br />
+	
+ * Caso o cod-cliente estiver cadastrado e com ativos sob custódia ela retorna status 200 OK com a lista dos ativos com os dados codigo do cliente, código do ativo, quantidade investida e valor unitario do ativo, respectivamente:
+
+ ```json
+	[
+	    {
+		"codCliente": 1,
+		"codAtivo": 4,
+		"qtdeAtivo": 4000,
+		"valor": 23.62
+	    },
+	    {
+		"codCliente": 1,
+		"codAtivo": 5,
+		"qtdeAtivo": 5000,
+		"valor": 14.33
+	    },
+	    {
+		"codCliente": 1,
+		"codAtivo": 2,
+		"qtdeAtivo": 3000,
+		"valor": 68.88
+	    },
+	    {
+		"codCliente": 1,
+		"codAtivo": 1,
+		"qtdeAtivo": 500,
+		"valor": 29.18
+	    },
+	    {
+		"codCliente": 1,
+		"codAtivo": 3,
+		"qtdeAtivo": 300,
+		"valor": 14.48
+	    }
+	]
+ ```
+
+</details>
+
 
 
  
