@@ -107,4 +107,51 @@ CREATE TABLE ativos_cliente (
 </details>
 
 
-### Suas queries
+<details>
+  <summary><strong>🛠 Testes</strong></summary><br />
+
+  Para executar os testes localmente, digite no terminal o comando `npm test`, ou para executar apenas um teste você pode usar `npm test 01`.
+
+</details>
+
+# Contratos
+## 1 - POST (/investimentos/comprar)
+
+- O endpoint pode ser acessado através do caminho (`/investimentos/comprar`) e recebe como entrada o seguinte body:
+
+```json
+	{
+	    "codCliente": "integer",
+	    "codAtivo": "integer",
+	    "qtdeAtivo": "integer",
+	}
+ ```
+ 
+<details>
+<summary><strong>Retorno</strong></summary><br />
+ 
+ * Caso a quantidade de ativos deja maior que a disponível na corretora será retornado o seguinte JSON com Status HTTP 400:
+ 
+ ```json
+	{
+	     "message": "Quantidade indisponível na Corretora!"
+	}
+ ```
+ * Havendo sucesso na requisição a ordem é adicionada à tabela ordens de compra, e a quantia de ativos comprada é atualizada em ativos-cliente retornando Status HTTP 201 Created e a ordem:
+ 
+ 
+ ```json
+ {
+    "codCliente": 1,
+    "codAtivo": 3,
+    "qtdeAtivo": 300,
+    "id": 0
+}
+```
+
+</details>
+
+
+
+ 
+ 
