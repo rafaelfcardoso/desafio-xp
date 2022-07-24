@@ -153,9 +153,9 @@ CREATE TABLE ativos_cliente (
 
 ## 2 - GET BY CLIENT(/ativos/{cod-cliente})
 
-- Esta rota teve a o caminho /cliente adicionado para não haver conflito com a rota Get By Asset dos ativos da corretora;
--  Endpoint(`/ativos/cliente/{cod-cliente}`) que recebe como parametro o codigo do cliente cadastrado.
--  Implementei esta rota para que fosse capaz de enviar os ativos sob custódia de cada cliente para o Front-end.
+* Esta rota teve o caminho `/cliente` adicionado para não haver conflito com a rota Get By Asset dos ativos da corretora;
+* Endpoint(`/ativos/cliente/{cod-cliente}`) que recebe como parametro o codigo do cliente cadastrado.
+* Implementei esta rota para que fosse capaz de enviar os ativos sob custódia de cada cliente para o Front-end.
 
 <details>
 <summary><strong>Retorno</strong></summary><br />
@@ -195,6 +195,26 @@ CREATE TABLE ativos_cliente (
 		"valor": 14.48
 	    }
 	]
+ ```
+
+</details>
+
+## 3 - GET BY ASSETS (/ativos/{cod-ativo})
+
+* Endpoint(`/ativos/{cod-ativo}`) que recebe como parametro o codigo do ativo cadastrado na tabela.
+
+<details>
+<summary><strong>Retorno</strong></summary><br />
+	
+ * Caso o cod-ativo corresponder aos ativos disponíveis retorna status 200 OK e o objeto do ativo com o código, quantidade disponível para compra e valor unitario, respectivamente:
+
+ ```json
+	{
+	    "codAtivo": 5,
+	    "qtdeAtivo": 5000000,
+	    "valor": 14.33
+	}
+	    
  ```
 
 </details>
