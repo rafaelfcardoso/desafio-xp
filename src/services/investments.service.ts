@@ -24,20 +24,21 @@ const newBuyOrder = async (order: IOrderBody): Promise<IOrderBody> => {
   const { valor } = await assetModel.getValueById(order.codAtivo);
 
   const clientAsset = { ...order, valor };
+  console.log({ clientAsset });
 
   const clientHistory = await assetModel.getByClient(order.codCliente); 
-  // console.log({ clientHistory });
+  console.log({ clientHistory });
 
-  if (clientHistory.length) {
-    clientHistory.forEach((asset) => {
-      if (asset.codAtivo === order.codAtivo) {
-        assetModel.updateBuy(clientAsset); // Atualiza a quantia sob custodia.
-      }
-    })
+
+  if (clientHistory.every((asset) => (asset.codAtivo !== order.codAtivo))) {
+    await assetModel.newInvestment(clientAsset);
   } else {
-    await assetModel.newInvestment(clientAsset); 
+    clientHistory.forEach((asset) => {
+      if (asset.codAtivo === order.codAtivo && asset.codCliente === order.codCliente) {
+        return assetModel.updateBuy(clientAsset); // Atualiza a quantia sob custodia.
+      }  
+    })
   }
-
   return buyOrder;
 };
 

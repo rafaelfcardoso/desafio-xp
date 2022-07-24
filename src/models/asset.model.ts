@@ -42,11 +42,11 @@ const newInvestment = async (investment: IClientAsset): Promise<ResultSetHeader>
 
 const updateBuy = async (investment: IClientAsset): Promise<ResultSetHeader> => {
   const [ result ] = await connection.execute<ResultSetHeader>(
-      `UPDATE desafio_xp.ativos_cliente
-      SET qtdeAtivo = qtdeAtivo + ?
-      WHERE codCliente = ?`,
-      [investment.qtdeAtivo, investment.codCliente]
-    );
+    `UPDATE desafio_xp.ativos_cliente
+    SET qtdeAtivo = qtdeAtivo + ?
+    WHERE codCliente = ? AND codAtivo = ?`,
+    [investment.qtdeAtivo, investment.codCliente, investment.codAtivo]
+  );
   
     return result;
 }
@@ -55,10 +55,9 @@ const updateSell = async (investment: IClientAsset): Promise<ResultSetHeader> =>
   const [ result ] = await connection.execute<ResultSetHeader>(
       `UPDATE desafio_xp.ativos_cliente
       SET qtdeAtivo = qtdeAtivo - ?
-      WHERE codCliente = ?`,
-      [investment.qtdeAtivo, investment.codCliente]
+      WHERE codCliente = ? AND codAtivo = ?`,
+      [investment.qtdeAtivo, investment.codCliente, investment.codAtivo]
     );
-  
     return result;
 }
 

@@ -56,10 +56,15 @@ INSERT INTO
 VALUES
   (1, 'bob','senha1', 1000);
   
-  INSERT INTO
+INSERT INTO
   desafio_xp.pessoa_cliente (codCliente, username, password, saldo)
 VALUES
   (2, 'alice','senha2', 1000);
+  
+INSERT INTO
+  desafio_xp.pessoa_cliente (codCliente, username, password, saldo)
+VALUES
+  (3, 'tom','senha3', 1000000);
 
 INSERT INTO
   desafio_xp.ativos_cliente (codCliente, codAtivo, qtdeAtivo, valor)
