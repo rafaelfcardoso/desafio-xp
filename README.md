@@ -18,7 +18,7 @@ funcionalidades de conta digital.
 - Procurei utilizar verbos HTTP adequados para cada operação, e corrigi algumas URLs conforme a seção de contratos abaixo no README.
 
 <details>
-  <summary><strong>🪑 Tabelas</strong></summary><br />
+  <summary><strong>Tabelas</strong></summary><br />
 
   O banco possui sete tabelas: pessoas clientes, ativos-corretora, ativos-cliente, ordens de compra, ordens de venda, depositos e saques.
 
