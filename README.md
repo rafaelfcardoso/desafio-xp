@@ -253,6 +253,41 @@ CREATE TABLE ativos_cliente (
 
 </details>
 
+## 5 - Requisição para saques POST (/conta/saque)
+
+- O endpoint pode é acessado no caminho (`/conta/saque`) e recebe como entrada o seguinte body:
+
+```json
+	{
+	    "codCliente": "integer",
+	    "valor": "integer",
+	}
+ ```
+ 
+<details>
+<summary><strong>Retorno</strong></summary><br />
+ 
+ * Caso o valor na requisição de saque for negativo, igual a zero, ou maior que a quantidade disponível no saldo será retornado Status HTTP 400 com a mensagem:
+ 
+ ```json
+	{
+	     "message": "Quantidade a ser sacada não poderá ser maior que o saldo, negativa ou igual a zero."
+	}
+ ```
+ * Havendo sucesso na requisição o depósito é adicionada à tabela ordens de saque, retornando Status HTTP 201 Created e a ordem:
+ 
+ 
+ ```json
+	{
+	    "codCliente": 1,
+	    "valor": 100,
+	    "id": 1
+	}
+```
+
+</details>
+
+
 
 
  
