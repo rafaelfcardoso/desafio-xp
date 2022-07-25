@@ -5,44 +5,17 @@ Este projeto trata-se de uma aplicação que se assemelha ao dia a
 dia da XP, um aplicativo de investimento em ações, com algumas
 funcionalidades de conta digital.
 
-## Tecnologias usadas
-<p align="left">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=nodejs,express,mysql,typescript,git,javascript," />
-  </a>
-</p>
+## Tomadas de Decisão
 
-> NodeJS, ExpressJS, MYSQL, TypeScript, Git e ES6.
+- Decidi utilizar o TypeScript para facilitar a detecção de erros durante o desenvolvimento e pelo IntelliSense do VS Code, que reflete maior agilidade e segurança ao escrever o código.
 
-## Instalando Dependências
+- Adotei a arquitetura de camadas MSC(Model, Service e controller) que ficaram responsaveis por realizar queries no banco de dados, tratamento de regras de negócio e interação com API, respectivamente.
 
-> Backend
-```bash
-cd desafio-xp/ 
-npm install
-``` 
+- O banco de dados escolhido foi o MYSQL, realizando a conexão com a camada Model por meio da biblioteca mysql2 do Express.
 
-  ⚠️ **Importante:** Para rodar o projeto é necessário ter o `node` instalado em seu computador.
+- Me planejei para pensar bem na API e consegui implementar o requisito bonus do middleware de autenticação com validação do token JWT.
 
-## Executando aplicação
-
-* Para rodar o back-end:
-
-  ```
-  cd desafio-xp/ && npm run dev
-  ```
-
-
-## Executando Testes
-
-* Para rodar todos os testes:
-
-  ```
-    npm test
-  ```
-  
-  
-  </details>
+- Procurei utilizar verbos HTTP adequados para cada operação, e corrigi algumas URLs detalhadas na seção de contratos nesse README.
 
 <details>
   <summary><strong>🪑 Tabelas</strong></summary><br />
@@ -110,12 +83,33 @@ CREATE TABLE ativos_cliente (
 </details>
 
 
-<details>
-  <summary><strong>🛠 Testes</strong></summary><br />
 
-  Para executar os testes localmente, digite no terminal o comando `npm test`, ou para executar apenas um teste você pode usar `npm test 01`.
+## Tecnologias usadas
+<p align="left">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=nodejs,express,mysql,typescript,git,javascript," />
+  </a>
+</p>
 
-</details>
+> NodeJS, ExpressJS, MYSQL, TypeScript, Git e ES6.
+
+## Instalando Dependências
+
+> Backend
+```bash
+cd desafio-xp/ 
+npm install
+``` 
+
+  ⚠️ **Importante:** Para rodar o projeto é necessário ter o `node` instalado em seu computador.
+
+## Executando aplicação
+
+* Para rodar o back-end:
+
+  ```
+  cd desafio-xp/ && npm run dev
+  ```
 
 # Contratos
 ## 1 - POST (/investimentos/comprar)
