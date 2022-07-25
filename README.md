@@ -303,6 +303,47 @@ npm install
 
 </details>
 
+## 7 - Bonus: Requisição para Login do usuário, POST (/login)
+
+- O endpoint pode é acessado na URL (`/login`) e recebe como entrada o seguinte body com um middleware de validação:
+
+```json
+	{
+	    "username": "string",
+	    "password": "string",
+	}
+ ```
+ 
+<details>
+<summary><strong>Retorno</strong></summary><br />
+ 
+ * Caso não possua username ou password, retorna Status HTTP 400 e respectivas mensagens:
+ 
+ ```json
+	{
+	     "message": "\"username\" is required"
+	}
+ ```
+	
+
+ ```json
+	{
+	    "message": "\"password\" is required"
+	}
+ ```
+	
+	
+ * Havendo sucesso na requisição, retorna-se o token com Status HTTP 200 Ok:
+ 
+ 
+ ```json
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXJuYW1lIjoiYWxpY2UifSwiaWF0IjoxNjU4NzExOTg0LCJleHAiOjE2NTg3MTI4ODR9.MgMbDqpCN4a42szDtgWLo3gTxpU0vFPskhGm1E8XA44"
+}
+```
+
+</details>
+
 
 
 
