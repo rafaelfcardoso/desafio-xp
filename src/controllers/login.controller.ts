@@ -19,7 +19,7 @@ loginController
 
     const token = generateJWTToken({ codCliente: user.codCliente, username: user.username });
     
-    return res.status(StatusCodes.OK).json({ token });
+    return res.status(StatusCodes.CREATED).json({ token });
   });
 
 export default loginController;
