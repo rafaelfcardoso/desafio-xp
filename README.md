@@ -300,7 +300,7 @@ npm install
 
 </details>
 
-## 7 - Bonus: Requisição para Login do usuário, com autenticação do JWT - JSON Web Token
+## 7 - Bonus: Requisição para Login do usuário, com autenticação do JWT
 
 - O endpoint pode é acessado na URL (`/login`) e recebe como entrada o seguinte body com um middleware de validação:
 
