@@ -17,6 +17,8 @@ funcionalidades de conta digital.
 
 - Procurei utilizar verbos HTTP adequados para cada operação, e corrigi algumas URLs conforme a seção de contratos abaixo no README.
 
+- A requisição GET escolhida para a listagem dos ativos investidos foi o endpoint de caminho (/ativos/{cod-cliente}), correpondente à tabela ativos-cliente, cuja quantia é atualizada a cada solicitação de investimento.
+
 <details>
   <summary><strong>Tabelas</strong></summary><br />
 
