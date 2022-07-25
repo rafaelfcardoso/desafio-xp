@@ -5,41 +5,17 @@ Este projeto trata-se de uma aplicação que se assemelha ao dia a
 dia da XP, um aplicativo de investimento em ações, com algumas
 funcionalidades de conta digital.
 
-## Técnologias usadas
+## Tomadas de Decisão
 
-Back-end:
-> Desenvolvido usando: NodeJS, ExpressJS, MYSQL e TypeScript.
+- Decidi utilizar o TypeScript para facilitar a detecção de erros durante o desenvolvimento e pelo IntelliSense do VS Code, que reflete maior agilidade e segurança ao escrever o código.
 
+- Adotei a arquitetura de camadas MSC(Model, Service e controller) que ficaram responsaveis por realizar queries no banco de dados, tratamento de regras de negócio e interação com API, respectivamente.
 
-## Instalando Dependências
+- O banco de dados escolhido foi o MYSQL, realizando a conexão com a camada Model por meio da biblioteca mysql2 do Express.
 
-> Backend
-```bash
-cd desafio-xp/ 
-npm install
-``` 
+- Me planejei para pensar bem na API e consegui implementar o requisito bonus do middleware de autenticação com validação do token JWT.
 
-  ⚠️ **Importante:** Para rodar o projeto é necessário ter o `node` instalado em seu computador.
-
-## Executando aplicação
-
-* Para rodar o back-end:
-
-  ```
-  cd desafio-xp/ && npm run dev
-  ```
-
-
-## Executando Testes
-
-* Para rodar todos os testes:
-
-  ```
-    npm test
-  ```
-  
-  
-  </details>
+- Procurei utilizar verbos HTTP adequados para cada operação, e corrigi algumas URLs detalhadas na seção de contratos nesse README.
 
 <details>
   <summary><strong>🪑 Tabelas</strong></summary><br />
@@ -107,12 +83,33 @@ CREATE TABLE ativos_cliente (
 </details>
 
 
-<details>
-  <summary><strong>🛠 Testes</strong></summary><br />
 
-  Para executar os testes localmente, digite no terminal o comando `npm test`, ou para executar apenas um teste você pode usar `npm test 01`.
+## Tecnologias usadas
+<p align="left">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=nodejs,express,mysql,typescript,git,javascript," />
+  </a>
+</p>
 
-</details>
+> NodeJS, ExpressJS, MYSQL, TypeScript, Git e ES6.
+
+## Instalando Dependências
+
+> Backend
+```bash
+cd desafio-xp/ 
+npm install
+``` 
+
+  ⚠️ **Importante:** Para rodar o projeto é necessário ter o `node` instalado em seu computador.
+
+## Executando aplicação
+
+* Para rodar o back-end:
+
+  ```
+  cd desafio-xp/ && npm run dev
+  ```
 
 # Contratos
 ## 1 - POST (/investimentos/comprar)
@@ -283,6 +280,66 @@ CREATE TABLE ativos_cliente (
 	    "valor": 100,
 	    "id": 1
 	}
+```
+
+</details>
+
+## 6 - Requisição para depósitos e saques GET (/conta/{cod-cliente})
+
+* Endpoint(`/conta/{cod-ativo}`) que recebe como parametro o codigo do cliente cadastrado na corretora.
+
+<details>
+<summary><strong>Retorno</strong></summary><br />
+	
+ * Caso o codigo corresponder a um cliente cadastrado, retorna status 200 OK e o objeto do ativo com o código e saldo disponível na conta deste cliente:
+
+ ```json
+	{
+	    "codCliente": 1,
+	    "saldo": 1000
+	}
+	    
+ ```
+
+</details>
+
+## 7 - Bonus: Requisição para Login do usuário, POST (/login)
+
+- O endpoint pode é acessado na URL (`/login`) e recebe como entrada o seguinte body com um middleware de validação:
+
+```json
+	{
+	    "username": "string",
+	    "password": "string",
+	}
+ ```
+ 
+<details>
+<summary><strong>Retorno</strong></summary><br />
+ 
+ * Caso não possua username ou password, retorna Status HTTP 400 e respectivas mensagens:
+ 
+ ```json
+	{
+	     "message": "\"username\" is required"
+	}
+ ```
+	
+
+ ```json
+	{
+	    "message": "\"password\" is required"
+	}
+ ```
+	
+	
+ * Havendo sucesso na requisição, retorna-se o token com Status HTTP 200 Ok:
+ 
+ 
+ ```json
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXJuYW1lIjoiYWxpY2UifSwiaWF0IjoxNjU4NzExOTg0LCJleHAiOjE2NTg3MTI4ODR9.MgMbDqpCN4a42szDtgWLo3gTxpU0vFPskhGm1E8XA44"
+}
 ```
 
 </details>
