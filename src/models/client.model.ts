@@ -5,7 +5,7 @@ import ILogin from "../interfaces/login.interface";
 
 const getByCode = async (codCliente: number): Promise<IClient> => {
   const [rows] = await connection.execute(
-      'SELECT * FROM desafio_xp.pessoa_cliente WHERE codCliente = ?', [codCliente],
+      'SELECT codCliente, saldo FROM desafio_xp.pessoa_cliente WHERE codCliente = ?', [codCliente],
   );
   const [client] = rows as IClient[];
   return client as IClient;
