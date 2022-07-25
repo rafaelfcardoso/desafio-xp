@@ -5,10 +5,16 @@ Este projeto trata-se de uma aplicação que se assemelha ao dia a
 dia da XP, um aplicativo de investimento em ações, com algumas
 funcionalidades de conta digital.
 
-## Técnologias usadas
+## Tecnologias usadas
+
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=nodejs,express,mysql,typescript,git,javascript," />
+  </a>
+</p>
 
 Back-end:
-> Desenvolvido usando: NodeJS, ExpressJS, MYSQL e TypeScript.
+> NodeJS, ExpressJS, MYSQL e TypeScript.
 
 
 ## Instalando Dependências
@@ -284,6 +290,25 @@ CREATE TABLE ativos_cliente (
 	    "id": 1
 	}
 ```
+
+</details>
+
+## 6 - Requisição para depósitos e saques GET (/conta/{cod-cliente})
+
+* Endpoint(`/conta/{cod-ativo}`) que recebe como parametro o codigo do cliente cadastrado na corretora.
+
+<details>
+<summary><strong>Retorno</strong></summary><br />
+	
+ * Caso o codigo corresponder a um cliente cadastrado, retorna status 200 OK e o objeto do ativo com o código e saldo disponível na conta deste cliente:
+
+ ```json
+	{
+	    "codCliente": 1,
+	    "saldo": 1000
+	}
+	    
+ ```
 
 </details>
 
