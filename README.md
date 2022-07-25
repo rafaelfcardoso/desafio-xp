@@ -13,7 +13,7 @@ funcionalidades de conta digital.
 
 - O banco de dados escolhido foi o MYSQL, realizando a conexão com a camada Model por meio da biblioteca mysql2 do Express.
 
-- Me planejei para pensar bem na API e no prazo estabelecido consegui implementá-la junto com o requisito bonus da autenticação com token JWT.
+- Geri meu tempo para poder pensar bem na API e consegui implementá-la junto com o requisito bonus da autenticação com token JWT.
 
 - Procurei utilizar verbos HTTP adequados para cada operação, e corrigi algumas URLs conforme a seção de contratos abaixo no README.
 
