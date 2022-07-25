@@ -6,16 +6,13 @@ dia da XP, um aplicativo de investimento em ações, com algumas
 funcionalidades de conta digital.
 
 ## Tecnologias usadas
-
-<p align="center">
+<p align="left">
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=nodejs,express,mysql,typescript,git,javascript," />
   </a>
 </p>
 
-Back-end:
-> NodeJS, ExpressJS, MYSQL e TypeScript.
-
+> NodeJS, ExpressJS, MYSQL, TypeScript, Git e ES6.
 
 ## Instalando Dependências
 
