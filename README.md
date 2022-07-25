@@ -15,7 +15,7 @@ funcionalidades de conta digital.
 
 - Me planejei para pensar bem na API e consegui implementar o requisito bonus do middleware de autenticação com validação do token JWT.
 
-- Procurei utilizar verbos HTTP adequados para cada operação, e corrigi algumas URLs detalhadas na seção de contratos nesse README.
+- Procurei utilizar verbos HTTP adequados para cada operação, e corrigi algumas URLs conforme a seção de contratos abaixo no README.
 
 <details>
   <summary><strong>🪑 Tabelas</strong></summary><br />
@@ -154,8 +154,7 @@ npm install
 * Endpoint(`/ativos/cliente/{cod-cliente}`) que recebe como parametro o codigo do cliente cadastrado.
 * Implementei esta rota para que fosse capaz de enviar os ativos sob custódia de cada cliente para o Front-end.
 
-<details>
-<summary><strong>Retorno</strong></summary><br />
+<strong>Retorno:</strong><br />
 	
  * Caso o cod-cliente estiver cadastrado e com ativos sob custódia ela retorna status 200 OK com a lista dos ativos com os dados codigo do cliente, código do ativo, quantidade investida e valor unitario do ativo, respectivamente:
 
@@ -193,8 +192,6 @@ npm install
 	    }
 	]
  ```
-
-</details>
 
 ## 3 - GET BY ASSET (/ativos/{cod-ativo})
 
@@ -303,7 +300,7 @@ npm install
 
 </details>
 
-## 7 - Bonus: Requisição para Login do usuário, POST (/login)
+## 7 - Bonus: Requisição para Login do usuário, com autenticação do JWT
 
 - O endpoint pode é acessado na URL (`/login`) e recebe como entrada o seguinte body com um middleware de validação:
 
@@ -333,7 +330,7 @@ npm install
  ```
 	
 	
- * Havendo sucesso na requisição, retorna-se o token com Status HTTP 200 Ok:
+ * Havendo sucesso na requisição, retorna-se o token com Status HTTP 201 Created:
  
  
  ```json
