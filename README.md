@@ -199,7 +199,7 @@ CREATE TABLE ativos_cliente (
 
 </details>
 
-## 3 - GET BY ASSETS (/ativos/{cod-ativo})
+## 3 - GET BY ASSET (/ativos/{cod-ativo})
 
 * Endpoint(`/ativos/{cod-ativo}`) que recebe como parametro o codigo do ativo cadastrado na tabela.
 
@@ -216,6 +216,40 @@ CREATE TABLE ativos_cliente (
 	}
 	    
  ```
+
+</details>
+
+## 4 - Requisição para depósitos e saques POST (/conta/deposito)
+
+- O endpoint pode é acessado no caminho (`/conta/deposito`) e recebe como entrada o seguinte body:
+
+```json
+	{
+	    "codCliente": "integer",
+	    "valor": "integer",
+	}
+ ```
+ 
+<details>
+<summary><strong>Retorno</strong></summary><br />
+ 
+ * Caso o valor na requisição for negativo ou zero será retornado Status HTTP 400 com a mensagem:
+ 
+ ```json
+	{
+	     "message": "Quantidade a ser depositada não poderá ser negativa ou igual a zero."
+	}
+ ```
+ * Havendo sucesso na requisição o depósito é adicionada à tabela ordens de depósito, retornando Status HTTP 201 Created e a ordem:
+ 
+ 
+ ```json
+{
+    "codCliente": 1,
+    "valor": 1000,
+    "id": 2
+}
+```
 
 </details>
 
